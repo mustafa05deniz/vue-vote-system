@@ -39,6 +39,15 @@ export default {
   props: {
     msg: String,
   },
+  methods:{
+    dene(){
+      const a = 5>4?true:false;
+      return a
+    },
+    create() {
+      const list = JSON.parse(localStorage?.getItem("voteList")) || [];
+    }
+  }
 };
 </script>
 
