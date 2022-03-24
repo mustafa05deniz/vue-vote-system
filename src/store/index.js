@@ -34,7 +34,8 @@ export default createStore({
       if (orderType) {
         commit("setOrderType", orderType);
       }
-      const list = JSON.parse(localStorage.getItem("voteList"))|| []
+      const list =JSON.parse(localStorage.getItem("voteList"))|| []
+
       if (orderType === "1") {
         list?.sort((a, b) => {
           return a.point - b.point;
@@ -61,8 +62,8 @@ export default createStore({
     },
     voteUp({ dispatch, state }, id) {
       const list = JSON.parse(localStorage.getItem("voteList"));
-      list[list.findIndex((res) => res.id === id)].point += 1;
-      list[list.findIndex((res) => res.id === id)].updateAt = new Date();
+      list[list?.findIndex((res) => res.id === id)].point += 1;
+      list[list?.findIndex((res) => res.id === id)].updateAt = new Date();
       localStorage.setItem("voteList", JSON.stringify(list));
       dispatch("getVoteItems", state.orderType);
     },
